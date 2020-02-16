@@ -145,6 +145,10 @@ class FlutterBeacon {
     else
     {
       print('False');
+       final list = regions.map((region) => region.toJson).toList();
+      _onRanging = _rangingChannel
+          .receiveBroadcastStream(list)
+          .map((dynamic event) => RangingResult.from(event));
     }
     return _onRanging;
   }
