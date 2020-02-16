@@ -162,9 +162,14 @@ class FlutterBeacon {
   /// This will fires [BluetoothState] whenever bluetooth state changed.
   Stream<BluetoothState> bluetoothStateChanged() {
     if (_onBluetoothState == null) {
+      print("True");
       _onBluetoothState = _bluetoothStateChangedChannel
           .receiveBroadcastStream()
           .map((dynamic event) => BluetoothState.parse(event));
+    }
+    else
+    {
+      print("False");
     }
     return _onBluetoothState;
   }
