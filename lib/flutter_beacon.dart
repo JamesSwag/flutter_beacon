@@ -136,12 +136,13 @@ class FlutterBeacon {
   /// This will fires [RangingResult] whenever the iBeacons in range.
   Stream<RangingResult> ranging(List<Region> regions) {
    
-      if (_onRanging == null) {
+   print("new");
+     
       final list = regions.map((region) => region.toJson).toList();
       _onRanging = _rangingChannel
           .receiveBroadcastStream(list)
           .map((dynamic event) => RangingResult.from(event));
-    }
+    
 
     return _onRanging;
   }
